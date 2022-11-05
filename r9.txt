@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void menu ();
+void moltiplica ();
+void dividi ();
+void ins_string();
+
+
+int main () 
+
+{
+	int scelta = 0;
+	menu ();
+	scanf ("%d", &scelta);
+
+	switch (scelta)
+	{
+		case 1:
+		moltiplica();
+		break;
+		case 2:
+                dividi();
+                break;
+		case 3:
+                ins_string();
+                break;
+        default:						/* default inserito*/
+        	    printf("errore");
+        	    break;
+	}
+
+return 0;
+
+}
+
+
+void menu ()
+{
+	printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("1 >> Moltiplicare due numeri\n2 >> Dividere due numeri\n3 >> Inserire una stringa\n");
+
+}
+
+
+void moltiplica ()
+{
+	int  a,b = 0;
+	printf ("Inserisci il primo numero da moltiplicare:");
+	scanf ("%d", &a);   										/*correazione input di tipo variabile*/
+	printf ("Inserisci il secondo numero da moltiplicare:");
+	scanf ("%d", &b);
+
+	int prodotto = a * b;
+
+	printf ("Il prodotto tra %d e %d e': %d", a,b,prodotto);
+}
+
+
+void dividi ()
+{
+        int  a,b = 0;
+        printf ("Inserisci il numeratore:");
+        scanf ("%d", &a);
+	printf ("Inserisci il denominatore:");
+        scanf ("%d", &b);
+    while(b==0){
+    	printf("inserire un valore diverso da 0 \n inserisci il denominatore:");	/* controllo denominatore*/
+    	scanf ("%d", &b);
+
+	};    
+
+        int divisione = a / b;				/*divisione tra interi*/
+
+        printf ("La divisione tra %d e %d e': %d", a,b,divisione);
+}
+
+
+
+
+
+void ins_string () 
+{
+	char stringa[10];
+        printf ("Inserisci la stringa:");
+        rewind(stdin);							/*pulire il buffer*/
+		fgets (stringa, 10,stdin);				/*evitare overrun e overflow*/
+		/*while(strlen(stringa)>10){
+			printf("la stringa inserita è troppo lunga riprova:");
+			rewind(stdin);
+			fgets (stringa, 10,stdin);
+		};*/
+        printf("La stringa inserita e' %s",stringa);	/*stampa a video la stringa*/
+}
+
